@@ -51,7 +51,6 @@ Things you may want to cover:
 | text             | text       | null: false                    |
 | team_id          | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
-| tweet_comment    | references | null: false, foreign_key: true |
 
 ###Association
 - belongs_to :user
@@ -94,7 +93,7 @@ Things you may want to cover:
 | sender_area_id   | integer    | null: false                    |
 | number_of_day_id | integer    | null: false                    |
 | money            | integer    | null: false                    |
-| user             | references | null: false, foreign_key :true |
+| user             | references | null: false, foreign_key: true |
 
 ###Association
 - belongs_to :user
@@ -127,7 +126,7 @@ Things you may want to cover:
 | house_number  | string     | null: false                   |
 | building_name | string     |                               |
 | tel           | string     | null:false                    |
-| order      | references | null:false, foreign_key :true |
+| order      | references | null:false, foreign_key: true |
 
 ###Association
 - belongs_to :order
