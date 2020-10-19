@@ -1,8 +1,14 @@
 
-<%= link_to "投稿する", new_tweet_path %>
+<div class="row match-to-row">
+  <div class="col-lg-4 col-sm-6">
+    <div class="thumbnail">
+      <% @teams.each do |team| %>
+        <%= link_to discussion_tweet_path(team.id) do %>
+        <%= image_tag "#{team.image}", class:"img-fluid" %>
+        <%= team.name %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-
-
-<% @tweets.each do |tweet| %>
-    <%= render partial: "tweet",locals:{tweet:tweet} %>
-<% end %>
