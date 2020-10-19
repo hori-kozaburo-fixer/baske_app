@@ -1,4 +1,9 @@
-
-  <%= image_tag tweet.image%>
+<div class="row match-to-row">
+  <div class="col-lg-4 col-sm-6">
+    <div class="thumbnail">
+  <%= image_tag tweet.image, class:"img-fluid" %>
   <p><%= tweet.text %></p>
   <span>投稿者</span><%= tweet.user.nickname %>
+   </div>
+  </div>
+</div>

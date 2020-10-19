@@ -1,8 +1,20 @@
-<%= form.text_field :name, placeholder: "題名"%>
-<%= form.file_field :image %>
-<%= form.text_area :text, placeholder: "text", rows: "10" %>
-<%= form.collection_select(:team_id, Team.all, :id, :name,{}) %><br />
-    <%# <div>
-      好きなチームを選択してください
-    </div> %>
-<%= form.submit "投稿する" %>
+<div class="d-flex flex-column" style="height: 500px;">
+  <div class="flex-fill border mx-3 my-3">
+    <%= form.text_field :name, placeholder: "題名", class:"ml-7"%>
+  </div>
+  <div class="flex-fill border mb-3 my-3">
+    <%= form.file_field :image %>
+  </div>
+  <div class="flex-fill border mb-3 my-3">
+    <%= form.text_area :text, placeholder: "text", rows: "10" %>
+  </div>
+  <div class="flex-fill border mb-3 my-3">
+    <%= form.collection_select(:team_id, Team.all, :id, :name,{}) %><br />
+      <div>
+        チームを選択してください
+      </div>
+  </div> 
+  <div class="flex-fill border mb-3 my-3">
+    <%= form.submit "投稿する", class:"btn btn-primary" %>
+  </div>
+</div>

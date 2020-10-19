@@ -1,6 +1,7 @@
 <div>
-  <%= link_to "投稿する", new_tweet_path %>
+  <%= link_to "投稿する", new_tweet_path, class:"btn btn-primary" %>
 </div>
+
 <% @tweets.each do |tweet| %>
     <%= render partial: "tweet",locals:{tweet:tweet} %>
 <% end %>
