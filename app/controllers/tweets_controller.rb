@@ -1,7 +1,6 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.all
-    @teams = Team.all
+ 
   end
 
   def new
@@ -19,9 +18,13 @@ class TweetsController < ApplicationController
     end
   end
 
-  def discussion
+  def show
     @team = Team.find(params[:id])
     @tweets = Tweet.where(team_id: @team.id)
+  end
+
+  def discussion
+    @tweet = Tweet.find(params[:id])
   end
 
   private

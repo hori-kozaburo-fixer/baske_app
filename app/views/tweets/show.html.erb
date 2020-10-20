@@ -1,0 +1,8 @@
+<%= render 'tweets/header'%>
+<div class="my-3 mx-3 d-flex justify-content-end">
+  <%= link_to "投稿する", new_tweet_path, class:"btn btn-primary" %>
+</div>
+<%= "#{@team.name}のチャットルーム" %>
+<% @tweets.each do |tweet| %>
+    <%= render partial: "tweet",locals:{tweet:tweet} %>
+<% end %>
