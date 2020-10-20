@@ -1,7 +1,6 @@
-<div>
-  <%= link_to "投稿する", new_tweet_path, class:"btn btn-primary" %>
-</div>
+<p>各投稿の話し合いの場</p>
+<%= render partial: "tweet", locals:{tweet: @tweet} %>
 
-<% @tweets.each do |tweet| %>
-    <%= render partial: "tweet",locals:{tweet:tweet} %>
-<% end %>
+<div>
+ここにコメントを挿入していく。
+</div>
