@@ -1,5 +1,6 @@
+<%= render 'shared/header'%>
 <p>各投稿の話し合いの場</p>
-<%= render partial: "tweet", locals:{tweet: @tweet} %>
+<%= render partial: "shared/tweet", locals:{tweet: @tweet} %>
 
 <% if current_user %>
   <%= form_with(model: [@tweet, @tweet_comment], local: true) do |f| %>
@@ -13,6 +14,7 @@
       <p>
         <strong><%= link_to tweet_comment.user.nickname, user_path(tweet_comment.user.id) %>
         <%= tweet_comment.text %>
+        <%= tweet_comment.created_at %>
       </p>
   <% end %>
 <% end %>
