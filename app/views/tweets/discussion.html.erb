@@ -1,13 +1,14 @@
 <%= render 'shared/header'%>
 <p>各投稿の話し合いの場</p>
 <%= render partial: "shared/tweet", locals:{tweet: @tweet} %>
-
-<% if user_signed_in? %>
-  <% if current_user.id == @tweet.user_id%>
-    <%= link_to '投稿の編集', edit_tweet_path(@tweet.id)%>
-    <%= link_to '投稿の削除', tweet_path(@tweet.id) %>
+<div class="user-only">
+  <% if user_signed_in? %>
+    <% if current_user.id == @tweet.user_id%>
+      <%= link_to '投稿の編集', edit_tweet_path(@tweet.id), class:"p-3 mb-2 bg-success text-white"%>
+      <%= link_to '投稿の削除', tweet_path(@tweet.id), class:"p-3 mb-2 bg-danger text-white" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <div class="comment mx-5">
   <% if current_user %>
