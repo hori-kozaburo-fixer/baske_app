@@ -12,11 +12,13 @@ class User < ApplicationRecord
   belongs_to_active_hash :team
 
   with_options presence: true do
-    validates :nickname
+    validates :nickname, length: { maximum: 10 }
     validates :full_name, format: { with:  /\A[ぁ-んァ-ン一-龥]/, message: 'Full-width characters.' }
     validates :full_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'Full-width katakana characters.' }
     validates :birth_day
+    validates :sex
+    validates :phone, format: { with: /\A\d{7,11}\z/, message: 'input only number' }
     validates :team_id, numericality: { other_than: 1 }
   end
-  
+
 end
