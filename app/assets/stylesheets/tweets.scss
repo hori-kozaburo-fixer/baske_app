@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .header-logo{
-  background-image: url(image/ALL.png);
+  background-image: url(image/コート.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -13,4 +13,28 @@
 h1{
   font-size: 30px;
 }
+.card{
+  text-align: center;
+}
 
+.team-logo{
+  text-align: center;
+}
+
+.tweet-card{
+  height: 100%;
+  width: 60%;
+  margin-bottom: 100px;
+
+}
+
+.tweet-image{
+  height: 60vh;
+  width: 100%;
+}
+
+.t{
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
