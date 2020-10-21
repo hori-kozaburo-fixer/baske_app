@@ -4,21 +4,22 @@
     <%= image_tag "image/mig.jpeg", size:"80x80" %>
     <% end %>
   </div>
-  <div>
+  <div class="mypage">
     <ul class="nav nav-pills d-flex flex-row-reverse bd-highlight">
       <li class="nav-item">
-        <%=link_to "Bリーグ", "https://www.bleague.jp/", class:"nav-link active"%> 
+        <%=link_to "Bリーグ", "https://www.bleague.jp/", class:"nav-link active bg-dark text-white"%> 
       </li>
       <li class="nav-item">
-        <%=link_to "交換", "#", class:"nav-link active"%> 
+        <%=link_to "交換", "#", class:"nav-link active bg-success text-white"%> 
       </li>
       <li class="nav-item">
-        <%=link_to "コミュニケーション", chat_home_index_path, class:"nav-link active"%>
+        <%=link_to "コミュニケーション", chat_home_index_path, class:"nav-link active bg-info text-white"%>
       </li>
     </ul>
   </div>
+
   <div class="d-flex justify-content-around d-flex align-items-center">
-  <div>
+  <div class="mypage">
     <% if user_signed_in? %>
       <div class="mx-2">
         <%= link_to "#{current_user.nickname}さん", user_path(current_user.id), class:"rounded-pill"%>
