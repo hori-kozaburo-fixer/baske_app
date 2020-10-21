@@ -1,0 +1,19 @@
+<%= render 'shared/header'%>
+
+<div class="my-3 mx-3 d-flex justify-content-end">
+  <%= link_to "投稿する", new_tweet_path, class:"btn btn-primary" %>
+</div>
+
+<div>
+  <div class="team-logo">
+    <%= image_tag "#{@team.image}", class:"img-fluid", size:"250x250" %>
+  </div>
+
+  <div class="t">
+    <% @tweets.each do |tweet| %>
+      <%= render partial: 'shared/tweet',locals:{tweet:tweet} %>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'shared/footer'%>

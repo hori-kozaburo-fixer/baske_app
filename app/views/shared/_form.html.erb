@@ -1,0 +1,31 @@
+<div class="d-flex flex-column" style="height: 500px; text-align: center;">
+
+  <div class="my-3">
+    <%= form.label :お題, class:"bg-dark text-white"%>
+    <%= form.label :必須, class:"badge badge-danger" %><br/>
+    <%= form.text_field :name, placeholder: "例）試合観戦", class:"ml-7"%>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :投稿する画像を選択してください, class:"bg-dark text-white"%>
+    <%= form.label :必須, class:"badge badge-danger" %><br/>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :出来事, class:"bg-dark text-white"%>
+    <%= form.label :必須, class:"badge badge-danger" %><br/>
+    <%= form.text_area :text, placeholder: "例）今日は名古屋ダイヤモンドドルフィンズの試合観戦！家族で大盛りあがり!最後にはなんと......", rows: "3", class:"form-control"%>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :チーム選択, class:"bg-dark text-white"%>
+      <%= form.label :必須, class:"badge badge-danger" %><br/>
+      <%= form.collection_select(:team_id, Team.all, :id, :name,{}) %><br />
+  </div> 
+
+  <div class="mb-4">
+    <%= form.submit "投稿する", class:"btn btn-primary" %>
+  </div>
+
+</div>

@@ -1,0 +1,14 @@
+<div>
+  <div><%= @user.nickname %></div>
+  <div><%= @user.full_name %></div>
+  <div><%= @user.full_name_kana %></div>
+  <div><%= @user.birth_day %></div>
+  <div><%= @user.team.name %></div>
+  <% @tweets.each do |tweet| %>
+    <%= image_tag tweet.image, class:"img-fluid" %>
+    <p><%= tweet.name %></p>
+    <p><%= tweet.text %></p>
+  <% end %>
+</div>
+
+
