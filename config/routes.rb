@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get 'chat'
     end
   end
-  resources :tweets, only: [:index, :new, :create, :show] do
+  resources :tweets do
     member do
       get 'discussion'
     end
