@@ -39,8 +39,15 @@ h1{
   align-items: center;
 }
 
-.comment .destoy{
+.comment{
   text-align: center;
+}
+
+.destroy{
+  text-align: center;
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-only{
