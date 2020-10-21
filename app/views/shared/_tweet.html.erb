@@ -9,6 +9,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= tweet.name%></h5>
       <p class="card-text"><%= tweet.text %></p>
+      <p class="card-text"><%= tweet.team.name%></p>
       <span>投稿者</span><%= link_to "#{tweet.user.nickname}", user_path(tweet.user.id) %>
     </div>
   
