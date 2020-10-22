@@ -1,31 +1,33 @@
 <%= render 'shared/header'%>
-<p>各投稿の話し合いの場</p>
-<%= render partial: "shared/tweet", locals:{tweet: @tweet} %>
-<div class="user-only">
-  <% if user_signed_in? %>
-    <% if current_user.id == @tweet.user_id%>
-      <%= link_to '投稿の編集', edit_tweet_path(@tweet.id), class:"p-3 mb-2 bg-success text-white"%>
-      <%= link_to '投稿の削除', tweet_path(@tweet.id), method: :delete, class:"p-3 mb-2 bg-danger text-white" %>
+<div class="main">
+  <p>各投稿の話し合いの場</p>
+  <%= render partial: "shared/tweet", locals:{tweet: @tweet} %>
+  <div class="user-only">
+    <% if user_signed_in? %>
+      <% if current_user.id == @tweet.user_id%>
+        <%= link_to '投稿の編集', edit_tweet_path(@tweet.id), class:"p-3 mb-2 bg-success text-white"%>
+        <%= link_to '投稿の削除', tweet_path(@tweet.id), method: :delete, class:"p-3 mb-2 bg-danger text-white" %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<div class="comment mx-5">
-  <% if current_user %>
-    <%= form_with(model: [@tweet, @tweet_comment], local: true) do |f| %>
-      <%= f.text_area :text, placeholder: "コメントする", rows:"2", class:"form-control" %>
-      <%= f.submit "コメント", class:"btn btn-secondary" %>
+  <div class="comment mx-5">
+    <% if current_user %>
+      <%= form_with(model: [@tweet, @tweet_comment], local: true) do |f| %>
+        <%= f.text_area :text, placeholder: "コメントする", rows:"2", class:"form-control" %>
+        <%= f.submit "コメント", class:"btn btn-secondary" %>
+      <% end %>
     <% end %>
-  <% end %>
 
-    <% if @tweet_comments %>
-      <% @tweet_comments.each do |tweet_comment| %>
-        <p>
-          <strong><%= link_to tweet_comment.user.nickname, user_path(tweet_comment.user.id) %>
-          <%= tweet_comment.text %>
-          <%= tweet_comment.created_at %>
-        </p>
+      <% if @tweet_comments %>
+        <% @tweet_comments.each do |tweet_comment| %>
+          <div>
+            <strong><%= link_to tweet_comment.user.nickname, user_path(tweet_comment.user.id) %>
+            <%= tweet_comment.text %>
+            <%= tweet_comment.created_at %>
+          </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 

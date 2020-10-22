@@ -1,10 +1,12 @@
 <%= render 'shared/header' %>
-<div class="top">
-  <div >
-    <%= link_to  'コミュニティケーション',chat_home_index_path, class:"btn btn-primary" %>
+
+  <div class="top">
+    <div >
+      <%= link_to  'コミュニティケーション',chat_home_index_path, class:"btn btn-primary rounded-circle p-2" %>
+    </div>
+    <div>  
+      <%= link_to '交換', "#", class:"btn btn-primary rounded-circle p-2" %>
+    </div>
   </div>
-  <div>  
-    <%= link_to '交換', "#", class:"btn btn-primary" %>
-  </div>
-</div>
+
 <%= render 'shared/footer' %>

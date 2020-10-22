@@ -1,9 +1,9 @@
 <%= render 'shared/header'%>
-
+<div class="main">
  <div class="container">
    <%= form_with(model: @tweet, local: true) do |form| %>
      <%= render partial: "shared/form", locals: { form: form } %>
    <% end %>
  </div>
-
+</div>
 <%= render 'shared/footer'%>

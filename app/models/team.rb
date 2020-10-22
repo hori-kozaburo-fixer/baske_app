@@ -20,6 +20,7 @@ class Team < ActiveHash::Base
     { id: 18, name: '島根スサノオマジック',image: 'image/島根.jpeg' },
     { id: 19, name: '広島ドラゴンフライズ',image: 'image/広島.png' },
     { id: 20, name: 'シーホース三河',image: 'image/三河.png' },
-    { id: 21, name: '名古屋ダイヤモンドドルフィンズ',image: 'image/team-logo01.png' }
+    { id: 21, name: '名古屋ダイヤモンドドルフィンズ',image: 'image/team-logo01.png' },
+    { id: 22, name: 'その他' }
   ]
 end
