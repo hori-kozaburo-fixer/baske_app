@@ -7,7 +7,7 @@ body{
   height: 100%;
 }
 
-.a{
+.top{
   width: 100%;
   height: 100%;
   display: flex;
@@ -20,7 +20,16 @@ body{
   align-items: center;
 }
 .nav-item{
-
   margin-right: 5px;
   border-radius: 10%;
+}
+
+.registration{
+  text-align: center;
+}
+
+.session{
+  display: flex;
+  flex-flow: column;
+  text-align: center;
 }

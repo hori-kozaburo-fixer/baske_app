@@ -16,8 +16,7 @@ class TweetsController < ApplicationController
       @tweet.save
       redirect_to tweet_path(@tweet.team_id)
     else 
-      @tweets = Tweet.all
-      render :show
+      render :new
     end
   end
 

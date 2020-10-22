@@ -1,0 +1,16 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+       full_name: お名前
+       full_name_kana: お名前（カナ）
+       birth_day: 生年月日
+       sex: 性別
+       phone: 電話番号
+       team_id: 好きなチーム
+     tweet:
+       name: お題
+       image: 画像
+       text: 出来事
+       team_id: チーム

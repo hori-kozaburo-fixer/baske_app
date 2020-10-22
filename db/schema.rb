@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_10_19_042245) do
     t.string "full_name", null: false
     t.string "full_name_kana", null: false
     t.date "birth_day", null: false
+    t.string "sex", null: false
+    t.string "phone", null: false
     t.integer "team_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

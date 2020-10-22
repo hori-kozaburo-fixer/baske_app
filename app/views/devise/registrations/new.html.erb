@@ -1,68 +1,97 @@
-<h2>新規登録</h2>
+<%= render 'shared/header' %>
+<div class="registration">  
+  <h2>新規登録</h2>
 
-<%= form_with model:@user, url: user_registration_path, method: :post,local: true do |f| %>
-  <%= render "devise/shared/error_messages", model: f.object %>
+  <%= form_with model:@user, url: user_registration_path, method: :post,local: true do |f| %>
+    <%= render "devise/shared/error_messages", model: f.object %>
 
-  <div class="field">
-    <%= f.label :ニックネーム %><br />
-    <%= f.text_field :nickname, autofocus: true, placeholder: "例）マイケル・ジョーダン", maxlength: "30", autocomplete: "nickname" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, placeholder: "PC・携帯どちらでも可", autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, placeholder: "6文字以上の半角英数字", autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認） %><br />
-    <%= f.password_field :password_confirmation, placeholder:"同じパスワードを入力してください", autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :お名前（全角） %><br />
-    <%= f.text_area :full_name, placeholder:"例）山田　太郎", autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :お名前（全角カナ） %><br />
-    <%= f.text_area :full_name_kana, placeholder:"例）ヤマダ　タロウ", autocomplete: "new-password" %>
-  </div>
-
-   <label class="form-text">生年月日</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-birth-wrap'>
-      <%= raw sprintf(
-                  f.date_select(
-                    :birth_day,
-                    class:'select-birth',
-                    id:"birth-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    <div class="field">
+      <%= f.label :メールアドレス %>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <%= f.email_field :email, placeholder: "PC・携帯どちらでも可", autocomplete: "email" %>
     </div>
 
-  <div class="field">
-    <%= f.collection_select(:team_id, Team.all, :id, :name,{}) %><br />
+    <div class="field">
+      <%= f.label :パスワード %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <%= f.password_field :password, placeholder: "6文字以上の半角英数字", autocomplete: "new-password" %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :パスワード（確認） %>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <%= f.password_field :password_confirmation, placeholder:"同じパスワードを入力してください", autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :ニックネーム %>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <%= f.text_field :nickname, autofocus: true, placeholder: "例）マイケル・ジョーダン", maxlength: "30", autocomplete: "nickname" %>
+    </div>
+
     <div>
-      好きなチームを選択してください
+        <%= f.label :電話番号 %>
+        <%= f.label :必須, class:"badge badge-danger" %><br/>
+        <%= f.text_field :phone, placeholder:"例）09012345678",maxlength:"11"%>
     </div>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "会員登録" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+    <div class="field">
+      <%= f.label :お名前（全角） %>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <%= f.text_area :full_name, placeholder:"例）山田太郎", autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :お名前（全角カナ） %>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <%= f.text_area :full_name_kana, placeholder:"例）ヤマダタロウ", autocomplete: "new-password" %>
+    </div>
+
+    <div> 
+      <%= f.label :生年月日 %>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <div class='input-birth-wrap'>
+        <%= raw sprintf(
+                    f.date_select(
+                      :birth_day,
+                      class:'select-birth',
+                      id:"birth-date",
+                      use_month_numbers: true,
+                      prompt:'--',
+                      start_year: 1930,
+                      end_year: (Time.now.year - 5),
+                      date_separator: '%s'),
+                    "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      </div>
+    </div>
+
+    <div>
+        <%= f.label :性別 %>
+        <%= f.label :必須, class:"badge badge-danger" %><br/>
+        <%= f.label :sex, :男 %>
+        <%= f.radio_button :sex, "男" %>
+        <%= f.label :sex, :女 %>
+        <%= f.radio_button :sex, "女" %>
+    </div>
+
+    <div>
+      <%= f.label :好きなチーム %>
+      <%= f.label :必須, class:"badge badge-danger" %><br/>
+      <%= f.collection_select(:team_id, Team.all, :id, :name,{}) %><br />
+    </div>
+
+    <div class="actions">
+      <%= f.submit "会員登録" %>
+    </div>
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+</div>
+
+<%= render 'shared/footer' %>
