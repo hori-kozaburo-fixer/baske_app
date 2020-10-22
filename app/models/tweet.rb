@@ -7,9 +7,9 @@ class Tweet < ApplicationRecord
 
   with_options presence: true do
     validates :name
-    validates :text
     validates :image
-    validates :team_id, numericality:{ other_than: 1, message: 'Select' }
+    validates :text
+    validates :team_id, numericality:{ other_than: 1, message: "を選択してください" }
   end
 
 end
