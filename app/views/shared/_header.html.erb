@@ -1,42 +1,52 @@
-<header class="d-flex justify-content-around p-3 mb-2 header-logo">
-  <div>
-    <%= link_to root_path do %>
-    <%= image_tag "image/mig.jpeg", size:"50x50" %>
-    <% end %>
-  </div>
-  <div class="mypage">
-    <ul class="nav nav-pills d-flex flex-row-reverse bd-highlight">
-      <li class="nav-item">
-        <%=link_to "Bリーグ", "https://www.bleague.jp/", class:"nav-link active bg-dark text-white"%> 
-      </li>
-      <li class="nav-item">
-        <%=link_to "交換", "#", class:"nav-link active bg-success text-white"%> 
-      </li>
-      <li class="nav-item">
-        <%=link_to "コミュニケーション", chat_home_index_path, class:"nav-link active bg-info text-white"%>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to 'BaskeApp', root_path, class:"navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="d-flex justify-content-around d-flex align-items-center">
-  <div class="mypage">
-    <% if user_signed_in? %>
-      <div class="mx-2">
-        <%= link_to "#{current_user.nickname}さん", user_path(current_user.id), class:"rounded-pill"%>
-      </div>
-      <div class="mx-2">
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"rounded-pill" %>
-      </div>
-    <% else %>
-      <div class="mx-2">
-        <%= link_to '新規登録', new_user_registration_path, class:"rounded-pill"%>
-      </div>
-      <div class="mx-2">
-        <%= link_to 'ログイン', new_user_session_path, class:"rounded-pill" %>
-      </div>
-    <% end %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+    
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "#{current_user.nickname}さん", user_path(current_user.id), class:"nav-link"%>
+        </div>
+        <div class="nav-item">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"nav-link" %>
+        </div>
+      <% else %>
+        <div class="nav-item">
+          <%= link_to '新規登録', new_user_registration_path, class:"nav-link"%>
+        </div>
+        <div class="nav-item">
+          <%= link_to 'ログイン', new_user_session_path, class:"nav-link" %>
+        </div>
+      <% end %>
+
+
+      <li class="nav-item">
+        <%=link_to "コミュニケーション", chat_home_index_path, class:"nav-link"%>
+      </li>
+
+      <li class="nav-item">
+        <%=link_to "交換", items_path, class:"nav-link"%>
+      </li>
+
+      <li class="nav-item">
+        <%=link_to "Bリーグ", "https://www.bleague.jp/", class:"nav-link" %><span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
-  </div>
-</header>
+</nav>
+
+<%= render "shared/footer" %>
+
+
 
 
