@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  get 'tweet_comments/create'
+
   devise_for :users
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   root  'home#index'
   resources :users, only:[:show]
 
@@ -15,5 +20,7 @@ Rails.application.routes.draw do
     end
     resources :tweet_comments, only: [:create]
   end
+  
+  resources :items, only:[:index]
   
 end
