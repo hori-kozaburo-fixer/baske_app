@@ -21,6 +21,6 @@ Rails.application.routes.draw do
     resources :tweet_comments, only: [:create]
   end
   
-  resources :items, only:[:index]
+  resources :items, only:[:index, :new, :create]
   
 end

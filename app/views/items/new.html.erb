@@ -1,0 +1,73 @@
+<%= render 'shared/header'%>
+<div class="main">
+  <div class="container listing">
+    <%= form_with(model: @item, local: true) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+      <div class="form-group">
+
+        <div class="my-3">
+          <%= f.label :商品名, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= f.text_field :name, placeholder: "例）バスケットボール", class:"ml-7"%>
+        </div>
+
+        <div class="my-3">
+          <%= f.label :紹介文, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= f.text_field :name, placeholder: "例）学生の頃に使用していたボールです。就職してなかなかバスケットをすること
+          なくなったので譲りたいと思います。", class:"ml-7"%>
+        </div>
+        
+        <div class="my-3">
+          <%= f.label :商品のカテゴリー, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, class:"ml-7") %>
+        </div>
+        
+        <div class="my-3">
+          <%= f.label :商品の状態, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= f.collection_select(:status_id, Status.all, :id, :name, {}, class:"ml-7") %>
+        </div>
+        
+        <div class="my-3">
+          <%= f.label :配送料, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= f.collection_select(:sender_area_id, DeliveryFee.all, :id, :name, {}, class:"ml-7") %>
+        </div>
+        
+        <div class="my-3">
+          <%= f.label :発送地, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= f.collection_select(:sender_area_id, SenderArea.all, :id, :name, {}, class:"ml-7") %>
+        </div>
+        
+        <div class="my-3">
+          <%= f.label :発送までの日数, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= f.collection_select(:number_of_day_id, NumberOfDay.all, :id, :name, {}, class:"ml-7") %>
+        </div>
+        
+        <div class="my-3">
+          <%= f.label :金額, class:"bg-dark text-white"%>
+          <%= f.label :必須, class:"badge badge-danger" %><br/>
+          <%= text_field :money, id:"item-money", placeholder:"例）1000円", class:"ml-7"%>
+        </div>
+        <div>
+          <div class="price-content">
+            <span>販売手数料 (10%)</span>
+            <span>
+              <span id='add-tax-price'></span>円
+            </span>
+          </div>
+          <div class="price-content">
+            <span>販売利益</span>
+              <span id='profit'></span>円
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">出品する</button>
+
+      </div>
+    <% end %>
+   </div>
+</div>
