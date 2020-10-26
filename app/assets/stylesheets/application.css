@@ -47,15 +47,14 @@ header{
 }
 
 .main{
-  padding-top:10px;
-  margin-top:70px;
+  padding-top:50px;
+  margin-top:0px;
   height:auto;
   padding-bottom:10px;
   margin-bottom:50px;
 }
 
 footer{
-  position: fixed;
   bottom: 0px;
   left: 0px;
   z-index: 10;
