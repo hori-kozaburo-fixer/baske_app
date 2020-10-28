@@ -1,5 +1,5 @@
 <%= render 'shared/header'%>
-<div class="main d-flex justify-content-between">
+<div class="main">
   <div>
     <%= render partial: "shared/tweet", locals:{tweet: @tweet} %>
     <div class="user-only">
@@ -12,22 +12,22 @@
     </div>
   </div>
 
-    <div class="comment mx-5">
-      <% if current_user %>
-        <%= form_with(model: [@tweet, @tweet_comment], local: true) do |f| %>
-          <%= f.text_area :text, placeholder: "コメントする", rows:"2", class:"form-control" %>
-          <%= f.submit "コメント", class:"btn btn-secondary" %>
-        <% end %>
+  <div class="comment mx-5">
+    <% if current_user %>
+      <%= form_with(model: [@tweet, @tweet_comment], local: true) do |f| %>
+        <%= f.text_area :text, placeholder: "コメントする", rows:"2", class:"form-control" %>
+        <%= f.submit "コメント", class:"btn btn-secondary" %>
       <% end %>
+    <% end %>
 
-      <% if @tweet_comments %>
-        <% @tweet_comments.each do |tweet_comment| %>
-          <div>
-            <strong><%= link_to tweet_comment.user.nickname, user_path(tweet_comment.user.id) %>
-            <%= tweet_comment.text %>
-            <%= tweet_comment.created_at %>
-          </div>
-        <% end %>
+    <% if @tweet_comments %>
+      <% @tweet_comments.each do |tweet_comment| %>
+        <div>
+          <strong><%= link_to tweet_comment.user.nickname, user_path(tweet_comment.user.id) %>
+          <%= tweet_comment.text %>
+          <%= tweet_comment.created_at %>
+        </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>

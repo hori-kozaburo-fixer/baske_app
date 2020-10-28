@@ -1,12 +1,57 @@
 <%= render 'shared/header' %>
-
-  <div class="top">
-    <div >
-      <%= link_to  'コミュニティケーション',chat_home_index_path, class:"btn btn-primary rounded-circle p-2" %>
+  <div class="main">
+    <div class="py-5">
+      <h4><span>いくぜ！！</span>オリンピックバスケ開催</h4>
+      <p class="timer h1">あと<span id="day"></span>日<span id="hour"></span>時間<span id="min"></span>分<span id="sec"></span>秒</p>
     </div>
-    <div>  
-      <%= link_to '交換', items_path, class:"btn btn-primary rounded-circle p-2" %>
+    <div class="py-5">
+      <div class="py-3">
+        <%= link_to  '掲示板',chat_home_index_path, class:"btn btn-warning rounded-circle p-2" %>
+      </div>
+      <div class="py-3">  
+        <%= link_to '交換', items_path, class:"btn btn-success rounded-circle p-2" %>
+      </div>
+      <div class="py-3">  
+        <%= link_to 'バスケ検定', other_home_index_path, class:"btn btn-warning rounded-circle p-2" %>
+      </div>
+      <div class="py-3">
+      <a href="https://lin.ee/pHke6nm"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+      </div>
     </div>
   </div>
-
 <%= render 'shared/footer' %>
+
+<script>
+  'use strict';
+
+  function countdown(due) {
+    const now = new Date();
+
+    const rest = due.getTime() - now.getTime();
+    const sec = Math.floor(rest / 1000) % 60;
+    const min = Math.floor(rest / 1000 / 60) % 60;
+    const hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+    const days = Math.floor(rest / 1000 / 60 / 60 / 24);
+    const count = [days, hours, min, sec];
+
+    return count;
+}
+
+
+function recalc(){
+  const counter = countdown(goal);
+  document.getElementById('day').textContent = counter[0];
+  document.getElementById('hour').textContent = counter[1];
+  document.getElementById('min').textContent = String(counter[2]).padStart(2, '0');
+  document.getElementById('sec').textContent = String(counter[3]).padStart(2, '0');
+  refresh();
+}
+
+function refresh(){
+  setTimeout(recalc, 1000);
+}
+
+let goal = new Date(2021, 7, 25);
+recalc();
+
+</script>
