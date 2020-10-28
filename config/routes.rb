@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   end
 
   root  'home#index'
-  resources :users, only:[:show]
-
+  
   resources :home, only:[:index] do
     collection do
-      get 'chat'
+      get 'chat', 'other'
     end
   end
+
+  resources :users, only:[:show]
+  
   resources :tweets do
     member do
       get 'discussion'

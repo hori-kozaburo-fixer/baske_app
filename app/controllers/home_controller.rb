@@ -6,4 +6,7 @@ class HomeController < ApplicationController
     @tweets = Tweet.all
     @teams = Team.all
   end
+
+  def other
+  end
 end
